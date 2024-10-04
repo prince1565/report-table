@@ -1,73 +1,85 @@
-
+/* Reset default margin and padding */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
 }
 
 body {
-  overflow: hidden; 
+  overflow: hidden; /* Prevents overflow of the body */
 }
 
 .table-container {
   width: 100%;
-  max-height: 500px; 
-  overflow: auto; 
-  border: 1px solid #ccc;
-  border-radius: 5px; 
+  max-height: 500px; /* Controls the vertical scroll within the table */
+  overflow: auto; /* Allows both horizontal and vertical scrolling within the table */
+  border: 1px solid #ccc; /* Outer border for the table container */
+  border-radius: 5px; /* Rounded corners for the container */
 }
 
 table {
-  border-collapse: separate; 
-  border-spacing: 0; 
-  width: 100%; 
+  border-collapse: collapse; /* Use collapse to combine borders */
+  width: 100%; /* Ensures the table takes the full width */
 }
 
 th, td {
-  border: 1px solid #ccc;
-  padding: 10px; 
-  text-align: left;
-  min-width: 120px; 
+  padding: 10px; /* Padding for better spacing */
+  text-align: center; /* Center align text horizontally */
+  vertical-align: middle; /* Center align text vertically */
+  min-width: 200px; /* Minimum width for each column */
+  border-bottom: 1px solid white; /* Set horizontal borders to white */
+}
+
+th {
+  background-color: rgb(167, 224, 246); /* Background color for header */
+}
+
+/* Increase width of the first column */
+td:first-child, th:first-child {
+  width: 200px; /* Set the desired width for the first column */
+}
+
+td {
+  background-color: white; /* Set a background color for data cells */
 }
 
 th.fixed-header {
-  background-color: skyblue;
   position: sticky;
-  top: 0; 
-  z-index: 2;
+  top: 0; /* Keeps the first row fixed at the top */
+  z-index: 2; /* Ensures the first row stays above the rest of the table */
 }
 
 td.fixed-column {
-  background-color: skyblue;
+  background-color: rgb(167, 224, 246);
   position: sticky;
-  left: 0; 
-  z-index: 1; 
+  left: 0; /* Keeps the first column fixed to the left */
+  z-index: 1; /* Ensures the first column stays below the first row */
 }
 
 th:first-child {
   left: 0;
-  z-index: 3; 
+  z-index: 3; /* Top-left cell above both first row and first column */
 }
 
-
+/* Custom scrollbar styles */
 .table-container::-webkit-scrollbar {
-  width: 6px; 
-  height: 8px; 
-  background-color: #f1f1f1;
+  width: 6px; /* Reduced width for the vertical scrollbar */
+  height: 8px; /* Height for the horizontal scrollbar */
+  background-color: #f1f1f1; /* Background for the scrollbar */
 }
 
 .table-container::-webkit-scrollbar-thumb {
-  background-color: rgba(136, 136, 136, 0.5);
-  border-radius: 10px; 
+  background-color: rgba(136, 136, 136, 0.5); /* Light scrollbar thumb color */
+  border-radius: 10px; /* Rounded scrollbar thumb */
 }
 
 .table-container::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(136, 136, 136, 0.8); 
+  background-color: rgba(136, 136, 136, 0.8); /* Slightly darker on hover */
 }
 
-
+/* Media query for responsiveness */
 @media (max-width: 768px) {
   th, td {
-    min-width: 80px;
+    min-width: 80px; /* Adjust the minimum width for smaller screens */
   }
 }
